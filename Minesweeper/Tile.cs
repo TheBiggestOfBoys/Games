@@ -10,6 +10,8 @@ namespace Minesweeper
 
         public byte SurroundingMines;
 
+        public ConsoleColor Color;
+
         public readonly ConsoleColor DetermineColor() => SurroundingMines switch
         {
             1 => ConsoleColor.Blue,
@@ -25,10 +27,10 @@ namespace Minesweeper
 
         public override readonly string ToString()
         {
+            if (IsFlagged) return "!";
             if (IsHidden) return "?";
-            else if (IsFlagged) return "!";
-            else if (IsMine && !IsHidden) return "*";
-            else return SurroundingMines.ToString();
+            if (IsMine) return "*";
+            return SurroundingMines.ToString();
         }
     }
 }
