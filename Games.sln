@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wordle", "Games\Wordle.csproj", "{410C3466-5480-463B-B5D5-94E54D996F8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Minesweeper\Minesweeper.csproj", "{F8D27BC8-94D7-4207-80A9-4CDF9A080EA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{410C3466-5480-463B-B5D5-94E54D996F8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410C3466-5480-463B-B5D5-94E54D996F8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410C3466-5480-463B-B5D5-94E54D996F8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{410C3466-5480-463B-B5D5-94E54D996F8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D27BC8-94D7-4207-80A9-4CDF9A080EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D27BC8-94D7-4207-80A9-4CDF9A080EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D27BC8-94D7-4207-80A9-4CDF9A080EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D27BC8-94D7-4207-80A9-4CDF9A080EA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DBA55C1-0B2B-4AB0-873D-22BD0C3BA89F}
+	EndGlobalSection
+EndGlobal
