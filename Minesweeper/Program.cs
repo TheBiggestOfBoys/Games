@@ -38,12 +38,12 @@ namespace Minesweeper
                 }
             }
 
-            byte numberOfMines;
+            ushort numberOfMines;
             do { Console.Write("Enter number of mines: "); }
-            while (!byte.TryParse(Console.ReadLine(), out numberOfMines));
+            while (!ushort.TryParse(Console.ReadLine(), out numberOfMines));
 
             // Place mines
-            for (byte i = 0; i < numberOfMines; i++)
+            for (ushort i = 0; i < numberOfMines; i++)
             {
                 byte randomX, randomY;
                 do
@@ -60,12 +60,10 @@ namespace Minesweeper
             {
                 for (byte x = 0; x < width; x++)
                 {
-                    Tile tile = grid[y][x];
-                    tile.SurroundingMines = GetSurroundingMines(x, y);
-                    tile.Color = tile.DetermineColor();
+                    grid[y][x].SurroundingMines = GetSurroundingMines(x, y);
+                    grid[y][x].Color = grid[y][x].DetermineColor();
                 }
             }
-
 
             bool clickedMine = false;
             bool firstClick = true;
@@ -87,7 +85,7 @@ namespace Minesweeper
             Console.WriteLine("\t'?' is a hidden tile");
             Console.WriteLine("\t'!' is a flagged tile");
             Console.WriteLine("\t'*' is a mine");
-            Console.WriteLine("\t'2' etc. is the amount of mines in the surrounding 8 tiles");
+            Console.WriteLine("\t'2' etc. amount of surrounding mines");
             #endregion
 
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -118,11 +116,16 @@ namespace Minesweeper
                     case ConsoleKey.Enter:
                         if (firstClick)
                         {
-                            if (!grid[yCoord][xCoord].IsMine)
+                            firstClick = false;
+
+                            // Randomly reveal cells until a 0-tile is revealed
+                            byte randomX, randomY;
+                            do
                             {
-                                RevealAdjacentTiles(yCoord, xCoord);
-                                firstClick = false;
-                            }
+                                randomX = (byte)random.Next(width);
+                                randomY = (byte)random.Next(height);
+                                RevealAdjacentTiles(randomX, randomY);
+                            } while (!grid[randomY][randomX].IsHidden);
                         }
 
                         grid[yCoord][xCoord].IsHidden = false;
@@ -177,7 +180,7 @@ namespace Minesweeper
             sbyte[] dy = [-1, 0, 1, -1, 1, -1, 0, 1];
 
             byte mineCount = 0;
-            if (!grid[x][y].IsMine)
+            if (!grid[y][x].IsMine)
             {
                 // Count adjacent mines
                 for (byte i = 0; i < 8; i++)
@@ -185,7 +188,7 @@ namespace Minesweeper
                     byte newX = (byte)(x + dx[i]);
                     byte newY = (byte)(y + dy[i]);
 
-                    if (newX >= 0 && newX < grid.Length && newY >= 0 && newY < grid[0].Length && grid[newX][newY].IsMine)
+                    if (newY >= 0 && newY < grid.Length && newX >= 0 && newX < grid[0].Length && grid[newY][newX].IsMine)
                     {
                         mineCount++;
                     }
@@ -200,11 +203,9 @@ namespace Minesweeper
             {
                 for (int x = 0; x < grid[y].Length; x++)
                 {
-                    Tile tile = grid[y][x];
-
-                    if (!tile.IsHidden)
+                    if (!grid[y][x].IsHidden)
                     {
-                        Console.ForegroundColor = tile.Color;
+                        Console.ForegroundColor = grid[y][x].Color;
                     }
 
                     if (y == yCoord && x == xCoord)
@@ -212,7 +213,7 @@ namespace Minesweeper
                         Console.BackgroundColor = ConsoleColor.White;
                     }
 
-                    Console.Write(tile);
+                    Console.Write(grid[y][x]);
                     Console.ResetColor();
                 }
                 Console.WriteLine();
@@ -235,26 +236,35 @@ namespace Minesweeper
 
         public static void RevealAdjacentTiles(byte x, byte y)
         {
-            if (!(x >= 0 && x < height && y >= 0 && y < width) || !grid[x][y].IsHidden)
+            // Check if the coordinates are within the grid and the tile is hidden
+            if (!(y >= 0 && y < height && x >= 0 && x < width) || !grid[y][x].IsHidden)
             {
                 return;
             }
 
+            // Reveal the tile
             grid[y][x].IsHidden = false;
 
-            if (grid[y][x].IsMine || grid[y][x].SurroundingMines > 0)
+            // If the tile is not a mine and has no surrounding mines, reveal its adjacent tiles
+            if (!grid[y][x].IsMine && grid[y][x].SurroundingMines == 0)
             {
-                return;
-            }
-
-            // Recursively reveal adjacent tiles
-            for (sbyte dx = -1; dx <= 1; dx++)
-            {
+                // Iterate over each adjacent tile
                 for (sbyte dy = -1; dy <= 1; dy++)
                 {
-                    if (dx != 0 || dy != 0)
+                    for (sbyte dx = -1; dx <= 1; dx++)
                     {
-                        RevealAdjacentTiles((byte)(y + dx), (byte)(x + dy));
+                        // Skip the current tile
+                        if (dx == 0 && dy == 0)
+                        {
+                            continue;
+                        }
+
+                        // Compute the coordinates of the adjacent tile
+                        byte newX = (byte)(x + dx);
+                        byte newY = (byte)(y + dy);
+
+                        // Reveal the adjacent tile
+                        RevealAdjacentTiles(newX, newY);
                     }
                 }
             }
