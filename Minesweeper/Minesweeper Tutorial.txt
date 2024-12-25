@@ -1,0 +1,10 @@
+﻿The goal of minesweeper is to flag all the mines without accidentally clicking on one.
+You can flag suspected mines by pressing "SPACE", turning the '?' into a '!'.
+You can dig suspected safe tiles by pressing "ENTER", turning the '?' into the number of surrounding mines, or '*' if you guessed wrong (it was a mine.
+Navigate up and down on the grid using "UP ARROW" & "DOWN ARROW".
+Navigate left and right on the grid using "LEFT ARROW" & "RIGHT ARROW".
+Key:
+    ?' is a hidden tile
+    !' is a flagged tile
+    '*' is a mine
+    '2' etc. amount of surrounding mines

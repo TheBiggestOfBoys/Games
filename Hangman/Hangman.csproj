@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-    <ItemGroup>
-	    <None Update="Minesweeper Tutorial.txt" CopyToOutputDirectory="PreserveNewest" />
-    </ItemGroup>
-	
 </Project>

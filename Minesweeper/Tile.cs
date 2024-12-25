@@ -2,7 +2,7 @@
 
 namespace Minesweeper
 {
-    internal struct Tile()
+    public struct Tile()
     {
         public bool IsMine = false;
         public bool IsHidden = true;
