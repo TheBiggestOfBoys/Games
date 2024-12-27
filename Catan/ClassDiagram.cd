@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Catan.Hex">
+    <Position X="2.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAEAAAAAAAAAQAAAAAAGAAAEAAAAAA=</HashCode>
+      <FileName>Hex.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Catan.Road">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Road.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Catan.Player">
+    <Position X="9.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABABAAAAAAAEAAgAAAAAAQAAgAAAAAgygAAACAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Catan.Building">
+    <Position X="11.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAEAAAgAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Catan.Catan">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACIIACAAAAQAApAABQFAAAAAAAgAAAAgg4AhGAgAAA=</HashCode>
+      <FileName>Catan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Catan.DevelopmentCard">
+    <Position X="13" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Catan.DevelopmentCard.DevelopmentCardType">
+        <TypeIdentifier>
+          <NewMemberFileName>DevelopmentCard.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAEAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DevelopmentCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Catan.Resources">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAQAAAAAAABAAAAAAAAAAAAEAABAAAAAAA=</HashCode>
+      <FileName>Resources.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
