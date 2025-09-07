@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 
-namespace Wordle
+namespace New_York_Times
 {
-	internal class Program
+	public class Wordle : Game
 	{
-		static void Main()
+		public void Play()
 		{
 			string word = "house";
-			char[][] grid = new char[5][];
+			string[] grid = new string[5];
 
 			for (int i = 0; i < grid.Length; i++)
 			{
-				grid[i] = new char[5];
+				grid[i] = new string('\0', 5);
 			}
 
 			Console.WriteLine("Try to guess the 5-letter word.");
@@ -21,13 +21,12 @@ namespace Wordle
 				string input = Console.ReadLine();
 				if (input.Length == word.Length)
 				{
-					grid[x] = input.ToCharArray();
+					grid[x] = input;
 
 					for (int i = 0; i < 5; i++)
 					{
 						if (grid[x][i] == word[i])
 							Console.BackgroundColor = ConsoleColor.DarkGreen;
-
 						else if (word.Contains(grid[x][i]))
 							Console.BackgroundColor = ConsoleColor.DarkYellow;
 
@@ -36,7 +35,7 @@ namespace Wordle
 					}
 					Console.WriteLine();
 
-					if (AreArraysEqual(grid[x], word.ToCharArray()))
+					if (grid[x] == word)
 					{
 						Console.WriteLine($"You guessed the word, it was {word}.");
 						return;
@@ -48,18 +47,6 @@ namespace Wordle
 				}
 			}
 			Console.WriteLine($"You didn't guess the word, it was {word}.");
-		}
-
-		static bool AreArraysEqual(char[] arr1, char[] arr2)
-		{
-			for (int i = 0; i < arr1.Length; i++)
-			{
-				if (arr1[i] != arr2[i])
-				{
-					return false;
-				}
-			}
-			return true;
 		}
 	}
 }
