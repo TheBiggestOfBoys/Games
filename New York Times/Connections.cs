@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
+using System.Linq;
 
 namespace New_York_Times
 {
@@ -11,24 +11,18 @@ namespace New_York_Times
 
 		public string[,] Board;
 
-		public Connections()
+		public Connections() : base()
 		{
-			LoadCategoriesFromFile();
-		}
-
-		private void LoadCategoriesFromFile()
-		{
-			string filePath = Path.Combine("Game States", "Connections", "Conections.txt");
 			if (!File.Exists(filePath))
 			{
 				Console.Error.WriteLine($"Category file not found: {filePath}");
 				return;
 			}
 
-			foreach (var line in File.ReadLines(filePath))
+			foreach (string line in File.ReadLines(filePath))
 			{
 				if (string.IsNullOrWhiteSpace(line)) continue;
-				var parts = line.Split("--");
+				string[] parts = line.Split("--");
 				if (parts.Length != 2) continue;
 
 				string category = parts[0].Trim();

@@ -6,4 +6,10 @@
     <RootNamespace>New_York_Times</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="Game States\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

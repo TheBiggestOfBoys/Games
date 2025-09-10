@@ -16,6 +16,7 @@ namespace New_York_Times
 				("Strands", new Strands()),
 				("Tiles", new Tiles()),
 				("Crossword", new Crossword()),
+				("LetterBoxed", new LetterBoxed()),
 			];
 
 			while (true)

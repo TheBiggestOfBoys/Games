@@ -1,9 +1,17 @@
 ﻿using System;
+using System.IO;
 
 namespace New_York_Times
 {
 	public abstract class Game
 	{
+		readonly public string filePath;
+
+		public Game()
+		{
+			filePath = Path.Combine("Game States", GetType().Name + ".txt");
+		}
+
 		public void Play()
 		{
 			Main();
